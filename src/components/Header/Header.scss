@@ -1,0 +1,17 @@
+.header_container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 32px;
+
+  img {
+    width: 32rem;
+    height: 11.25rem;
+  }
+
+  span {
+    background-color: #d8e054;
+    padding: 8px 16px;
+    border-radius: 25px;
+  }
+}

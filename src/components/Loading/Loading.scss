@@ -1,0 +1,39 @@
+.loading_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 11.25rem;
+    height: 11.25rem;
+  }
+}
+
+.loading_div_container {
+  display: flex;
+  align-items: flex-end;
+}
+
+.load {
+  width: 5px;
+  height: 5px;
+  animation: salto 0.5s alternate infinite;
+  border-radius: 50%;
+  margin-left: 3px;
+  margin-right: 3px;
+  margin-bottom: 7px;
+}
+.load:nth-child(2) {
+  animation-delay: 0.18s;
+}
+.load:nth-child(3) {
+  animation-delay: 0.37s;
+}
+@keyframes salto {
+  from {
+    transform: scaleX(1.25);
+  }
+  to {
+    transform: translateY(-10px) scaleX(1);
+  }
+}

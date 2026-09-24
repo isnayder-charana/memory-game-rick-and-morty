@@ -1,0 +1,46 @@
+@use "../../styles/base/settings" as *;
+
+.button_container {
+  padding: 12px 80px;
+  border-width: 0px 0px 4px 4px;
+  border-style: solid;
+  border-radius: 8px;
+  box-shadow: -1px 1px 4px rgba(0, 0, 0, 0.2);
+  margin-top: 48px;
+  cursor: pointer;
+  color: $text_primary;
+}
+
+.normal {
+  @extend .button_container;
+  background-color: $primary;
+  border-color: $secondary;
+
+  &:hover {
+    background-color: $primary_hover;
+    transition: background-color 0.3s;
+  }
+
+  &:active {
+    background-color: $primary_active;
+    transition: background-color 0.3s;
+    color: $white;
+  }
+}
+
+.reverse {
+  @extend .button_container;
+  background-color: $secondary;
+  border-color: $primary;
+
+  &:hover {
+    background-color: $secondary_hover;
+    transition: background-color 0.3s;
+  }
+
+  &:active {
+    background-color: $secondary_active;
+    transition: background-color 0.3s;
+    color: $white;
+  }
+}

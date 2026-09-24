@@ -1,0 +1,21 @@
+.home_characters_container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 16px;
+}
+
+.home_loading_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 49rem;
+}
+
+.home_text_container {
+  margin-bottom: 24px;
+}
+
+.home_button_container {
+  display: flex;
+  justify-content: center;
+}

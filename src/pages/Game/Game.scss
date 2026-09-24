@@ -1,0 +1,11 @@
+.game_texts_container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.game_card_container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 16px;
+}

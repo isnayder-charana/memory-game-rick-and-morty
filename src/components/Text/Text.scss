@@ -1,0 +1,49 @@
+@use "../../styles/base/settings" as *;
+
+.text_regular {
+  font-weight: 400;
+}
+
+.text_medium {
+  font-weight: 500;
+}
+
+.text_semi_bold {
+  font-weight: 600;
+}
+
+.text_bold {
+  font-weight: 700;
+}
+
+.size_1 {
+  font-size: 3rem;
+}
+
+.size_2 {
+  font-size: 1.5rem;
+}
+
+.size_3 {
+  font-size: 1.25rem;
+}
+
+.size_4 {
+  font-size: 1rem;
+}
+
+.size_5 {
+  font-size: 0.625rem;
+}
+
+.color_primary {
+  color: $text_primary;
+}
+
+.mb_16 {
+  margin-bottom: 16px;
+}
+
+.pointer {
+  cursor: pointer;
+}
