@@ -1,78 +1,76 @@
-# React + TypeScript + Vite
+# Rick and Morty Memory Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A card-matching memory game built with React, TypeScript and Vite. Each round loads 6 random characters from the [Rick and Morty API](https://rickandmortyapi.com/), so the board is different every game.
 
-Currently, two official plugins are available:
+## How to play
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. **Home**: 6 random characters are loaded and shown as a preview.
+2. **Game**: the 12 cards (6 pairs) are shuffled, briefly revealed so you can memorize them, then turned face down. Flip two cards per turn:
+   - If they match, the pair is removed and your hit count goes up.
+   - If they don't, both cards flip back face down.
+3. **Result**: once every pair is found, you see how many turns you took. From there you can replay with the same characters or go back to the home page for a new set.
 
-## React Compiler
+## Tech stack
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- [React 19](https://react.dev/) with the [React Compiler](https://react.dev/learn/react-compiler)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vite.dev/)
+- [React Router](https://reactrouter.com/)
+- [Sass](https://sass-lang.com/) for styles
+- [Vitest](https://vitest.dev/) + [Testing Library](https://testing-library.com/) for unit tests
+- [pnpm](https://pnpm.io/) as the package manager
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+## Getting started
 
-## Expanding the ESLint configuration
+### Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Node.js (a current LTS version)
+- pnpm
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Installation
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+pnpm install
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+### Environment variables
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Copy `.env.template` to `.env.local` and set the API URL:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+VITE_API_URL=https://rickandmortyapi.com/api
+```
 
+### Run in development
+
+```bash
+pnpm dev
+```
+
+## Available scripts
+
+| Script               | Description                                |
+| -------------------- | ------------------------------------------ |
+| `pnpm dev`           | Start the development server               |
+| `pnpm build`         | Type-check and build for production        |
+| `pnpm preview`       | Preview the production build locally       |
+| `pnpm lint`          | Run ESLint                                 |
+| `pnpm test`          | Run tests in watch mode                    |
+| `pnpm test:run`      | Run tests once                             |
+| `pnpm test:coverage` | Run tests and generate a coverage report   |
+
+## Project structure
+
+```
+src/
+├── app/              # App shell: router, global context (GameProvider) and hooks
+├── components/       # Shared UI components (Button, Header, Loading, Text)
+├── config/           # Environment configuration
+├── features/
+│   ├── characters/   # Character fetching from the API, types and helpers
+│   └── memory-game/  # Game board, cards, game logic hook and reducer
+├── pages/            # Home, Game and Result pages
+├── styles/           # Global styles and Sass settings
+├── utils/            # Generic helpers (e.g. shuffle)
+└── test/             # Test setup
 ```
